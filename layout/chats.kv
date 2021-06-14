@@ -1,0 +1,454 @@
+#: import images_path kivymd.images_path
+#: import get_color_from_hex kivy.utils.get_color_from_hex
+#: import AKBadgeLayout akivymd.uix.badgelayout.AKBadgeLayout
+<CustomTextInput@TextInput>:
+    background_normal: f"{images_path}transparent.png"
+    background_active: self.background_normal
+    foreground_color: 0,0,0,.5
+    hint_text_color: app.theme_cls.disabled_hint_text_color
+    padding: "8dp", "12dp","8dp", 0
+    cursor_color: 0,0,0, .2
+    size_hint_y: None
+    height: "38dp"
+    canvas.after:
+        Color:
+            rgba: 0,0, 0.005, 0.07
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [8,]
+<RoundIcon>:
+    source: "assets//me.jpeg"
+    mipmap: True
+    size_hint: None, None
+    size: "60dp", "60dp"
+    radius: [25,]
+    on_release: print("profile clicked")
+
+<CustomAKBadgeLayout@AKBadgeLayout>:
+    pos_hint: {"center_x": .5, "center_y": .5}
+    badgeitem_padding: dp(6)
+    bold: True
+
+<UI>:
+# chats
+    MDBottomNavigation:
+        text_color_normal: 0,0,0,.5
+        text_color_active: 0,0,0,1
+        MDBottomNavigationItem:
+            name: "chats"
+            icon: "chat"
+            text: "chats"
+            md_bg_color: 0,0,0,1
+            MDBoxLayout:
+                pos_hint: {"top":1}
+                size_hint_y: None
+                height: "60dp"
+                spacing: "10dp"
+                padding: "12dp", 0, "12dp", 0
+
+                FitImage:
+                    source: "assets//me.jpeg"
+                    size_hint: None, None
+                    size: "35dp", "35dp"
+                    pos_hint: {"center_y":.5}
+                    radius: [30,]
+                MDLabel:
+                    text: "Chats"
+                    font_style: "H5"
+                    halign: "center"
+                    bold: True
+                    pos_hint: {"center_y":.5}
+
+                MDIconButton:
+                    icon: "square-edit-outline"
+                    pos_hint: {"center_y":.5}
+
+            MDBoxLayout:
+                size_hint_y: .05
+                padding: "10dp"
+                pos_hint: {"center_y":.84}
+
+                CustomTextInput:
+                    hint_text: "Search"
+
+            MDBoxLayout:
+                size_hint_y: .15
+                pos_hint: {"center_y": .75}
+                padding: "10dp"
+                ScrollView:
+                    do_scroll_y: False
+                    do_scroll_x: True
+                    size: self.size
+                    bar_color: 1,1,1,1
+                    bar_inactive_color: 1,1,1,1
+
+                    GridLayout:
+                        size_hint_x: None
+                        height: self.minimum_height
+                        width: self.minimum_width
+                        rows: 1
+                        spacing: "15dp"
+
+                        MDIconButton:
+                            icon: "plus"
+                            md_bg_color: get_color_from_hex("#f0f0f0")
+
+                        RoundIcon:
+                            source: "assets//1.jpg"
+                            size: "50dp", "50dp"
+                        RoundIcon:
+                            source: "assets//2.jpg"
+                            size: "50dp", "50dp"
+                        RoundIcon:
+                            source: "assets//3.jpg"
+                            size: "50dp", "50dp"
+                        RoundIcon:
+                            source: "assets//4.jpg"
+                            size: "50dp", "50dp"
+                        RoundIcon:
+                            source: "assets//5.jpg"
+                            size: "50dp", "50dp"
+                        RoundIcon:
+                            source: "assets//me.jpeg"
+                            size: "50dp", "50dp"
+            MDBoxLayout:
+                size_hint_y: .8
+                pos_hint: {"center_y":.3}
+
+                ScrollView:
+                    MDList:
+                        TwoLineAvatarIconListItem:
+                            text: "Denis"
+                            secondary_text: "I read the letter. Stood up. Sat down. Pondered for a minute. Then reread the letter again."
+                            spacing: "5dp"
+                            bg_color: 1,1,1,1
+                            IconLeftWidget:
+                                CustomAKBadgeLayout:
+                                    text: ""
+                                    position: "right"
+                                    badgeitem_color: get_color_from_hex("#32CD32")
+                                    RoundIcon:
+                                        source: "assets//1.jpg"
+                                        size: "50dp", "50dp"
+
+                        TwoLineAvatarIconListItem:
+                            text: "Lena Martinuk"
+                            secondary_text: "You have come very fast."
+                            spacing: "5dp"
+                            bg_color: 1,1,1,1
+
+                            IconLeftWidget:
+                                CustomAKBadgeLayout:
+                                    text: ""
+                                    position: "right"
+                                    badgeitem_color: get_color_from_hex("#32CD32")
+                                    RoundIcon:
+                                        source: "assets//2.jpg"
+                                        size: "50dp", "50dp"
+
+                        TwoLineAvatarIconListItem:
+                            text: "Taras Martinuk"
+                            secondary_text: "My car won’t start."
+                            spacing: "5dp"
+                            bg_color: 1,1,1,1
+
+                            IconLeftWidget:
+                                CustomAKBadgeLayout:
+                                    text: ""
+                                    position: "right"
+                                    badgeitem_color: get_color_from_hex("#bfbfbf")
+                                    RoundIcon:
+                                        source: "assets//3.jpg"
+                                        size: "50dp", "50dp"
+                        TwoLineAvatarIconListItem:
+                            text: "Andrei"
+                            secondary_text: "some random messeges"
+                            spacing: "5dp"
+                            bg_color: 1,1,1,1
+
+                            IconLeftWidget:
+                                CustomAKBadgeLayout:
+                                    text: ""
+                                    position: "right"
+                                    badgeitem_color: get_color_from_hex("#bfbfbf")
+                                    RoundIcon:
+                                        source: "assets//4.jpg"
+                                        size: "50dp", "50dp"
+
+                        TwoLineAvatarIconListItem:
+                            text: "Alena"
+                            secondary_text: "It is raining."
+                            spacing: "5dp"
+                            bg_color: 1,1,1,1
+
+                            IconLeftWidget:
+                                CustomAKBadgeLayout:
+                                    text: ""
+                                    position: "right"
+                                    badgeitem_color: get_color_from_hex("#bfbfbf")
+                                    RoundIcon:
+                                        source: "assets//5.jpg"
+                                        size: "50dp", "50dp"
+
+                        TwoLineAvatarIconListItem:
+                            text: "Vladislav"
+                            secondary_text: "I am Monster"
+                            spacing: "5dp"
+                            bg_color: 1,1,1,1
+
+                            IconLeftWidget:
+                                CustomAKBadgeLayout:
+                                    text: ""
+                                    position: "right"
+                                    badgeitem_color: get_color_from_hex("#32CD32")
+                                    RoundIcon:
+                                        source: "assets//me.jpeg"
+                                        size: "50dp", "50dp"
+# people
+        MDBottomNavigationItem:
+            name: "peoples"
+            icon: "account-multiple"
+            text: "People"
+            on_tab_press: root.ids.actv.text_color=0,0,0,1; root.ids.stry.text_color=0,0,0,.5;
+            md_bg_color: 0,0,0,1
+            MDBoxLayout:
+                pos_hint: {"top":1}
+                size_hint_y: None
+                height: "60dp"
+                spacing: "10dp"
+                padding: "12dp", 0, "12dp", 0
+
+                FitImage:
+                    source: "assets//me.jpeg"
+                    size_hint: None, None
+                    size: "35dp", "35dp"
+                    pos_hint: {"center_y":.5}
+                    radius: [30,]
+                MDLabel:
+                    text: "People"
+                    font_style: "H5"
+                    halign: "center"
+                    bold: True
+                    pos_hint: {"center_y":.5}
+
+                MDIconButton:
+                    icon: "contacts"
+                    pos_hint: {"center_y":.5}
+
+            MDFloatLayout:
+                pos_hint: {"center_y": .82}
+                size_hint_y: .08
+
+                MDFillRoundFlatButton:
+                    id: actv
+                    markup: True
+                    text: f"[b]ACTIVE({2})[/b]"
+                    pos_hint: {"center_x": .25, "center_y": .85}
+                    md_bg_color: get_color_from_hex("#f0f0f0")
+                    line_color: get_color_from_hex("#f0f0f0")
+                    theme_text_color: "Custom"
+                    text_color: 0,0,0,1
+                    on_release: root.switch_actv()
+
+                MDFillRoundFlatButton:
+                    id: stry
+                    markup: True
+                    text: f"[b]STORIES({3})[/b]"
+                    pos_hint: {"center_x": .75, "center_y": .85}
+                    md_bg_color: get_color_from_hex("#f0f0f0")
+                    line_color: get_color_from_hex("#f0f0f0")
+                    theme_text_color: "Custom"
+                    text_color: 0,0,0,1
+                    on_release: root.switch_stry()
+
+            Carousel:
+                id: crsl
+                direction: "right"
+                size_hint_y: .85
+                post_hint: {"center_y": .38}
+                ignore_perpendicular_swipes: True
+                MDBoxLayout:
+                    size_hint_y: .875
+
+                    ScrollView:
+                        size: self.size
+                        post_hint: {"center_x": .5, "center_y": .63}
+                        MDList:
+                            cols: 1
+                            id: msgs
+
+                            OneLineAvatarIconListItem:
+                                text: "Denis"
+                                spacing: "5dp"
+                                bg_color: 1,1,1,1
+                                IconLeftWidget:
+                                    CustomAKBadgeLayout:
+                                        text: ""
+                                        position: "right"
+                                        badgeitem_color: get_color_from_hex("#32CD32")
+                                        RoundIcon:
+                                            source: "assets//1.jpg"
+                                            size: "50dp", "50dp"
+
+                            OneLineAvatarIconListItem:
+                                text: "Lena Martinuk"
+                                spacing: "5dp"
+                                bg_color: 1,1,1,1
+
+                                IconLeftWidget:
+                                    CustomAKBadgeLayout:
+                                        text: ""
+                                        position: "right"
+                                        badgeitem_color: get_color_from_hex("#32CD32")
+                                        RoundIcon:
+                                            source: "assets//2.jpg"
+                                            size: "50dp", "50dp"
+
+                            OneLineAvatarIconListItem:
+                                text: "Taras Martinuk"
+                                spacing: "5dp"
+                                bg_color: 1,1,1,1
+
+                                IconLeftWidget:
+                                    CustomAKBadgeLayout:
+                                        text: ""
+                                        position: "right"
+                                        badgeitem_color: get_color_from_hex("#bfbfbf")
+                                        RoundIcon:
+                                            source: "assets//3.jpg"
+                                            size: "50dp", "50dp"
+                            OneLineAvatarIconListItem:
+                                text: "Andrei"
+                                spacing: "5dp"
+                                bg_color: 1,1,1,1
+
+                                IconLeftWidget:
+                                    CustomAKBadgeLayout:
+                                        text: ""
+                                        position: "right"
+                                        badgeitem_color: get_color_from_hex("#bfbfbf")
+                                        RoundIcon:
+                                            source: "assets//4.jpg"
+                                            size: "50dp", "50dp"
+
+                            OneLineAvatarIconListItem:
+                                text: "Alena"
+                                spacing: "5dp"
+                                bg_color: 1,1,1,1
+
+                                IconLeftWidget:
+                                    CustomAKBadgeLayout:
+                                        text: ""
+                                        position: "right"
+                                        badgeitem_color: get_color_from_hex("#bfbfbf")
+                                        RoundIcon:
+                                            source: "assets//5.jpg"
+                                            size: "50dp", "50dp"
+
+                MDBoxLayout:
+                    size_hint_y: .9
+                    post_hint: {"center_x": .5, "center_y": .38}
+                    ScrollView:
+                        size: self.size
+                        post_hint: {"center_x": .5, "center_y": .63}
+
+                        GridLayout:
+                            size_hint_y: None
+                            height: self.minimum_height
+                            width: self.minimum_width
+                            cols: 2
+                            spacing: "20dp"
+                            padding: "20dp"
+
+                            MDCard:
+                                orientation: "vertical"
+                                padding: "8dp"
+                                size_hint: 1, None
+                                height: "210dp"
+                                post_hint: {"center_x": .5, "center_y": .5}
+                                elevation: 5
+                                border_radius: 20
+                                radius: [15]
+                                background: "assets//my_story.jpg"
+                                FloatLayout:
+                                    MDIconButton:
+                                        icon: "plus"
+                                        md_bg_color: 1,1,1,1
+                                        pos_hint: {"center_x": .15, "center_y": .9}
+
+                                    MDLabel:
+                                        bold: True
+                                        text: "Add to Story"
+                                        theme_text_color: "Custom"
+                                        text_color: 1,1,1,1
+                                        pos_hint: {"center_x": .5, "center_y": .08}
+
+                            MDCard:
+                                orientation: "vertical"
+                                padding: "8dp"
+                                size_hint: 1, None
+                                height: "210dp"
+                                post_hint: {"center_x": .5, "center_y": .5}
+                                elevation: 5
+                                border_radius: 20
+                                radius: [15]
+                                background: "assets//my_story.png"
+                                FloatLayout:
+                                    RoundIcon:
+                                        source: "assets//me.jpeg"
+                                        size: "40dp", "40dp"
+                                        pos_hint: {"center_x": .15, "center_y": .9}
+
+                                    MDLabel:
+                                        bold: True
+                                        text: "Best game of 2020"
+                                        theme_text_color: "Custom"
+                                        text_color: 1,1,1,1
+                                        pos_hint: {"center_x": .5, "center_y": .08}
+
+                            MDCard:
+                                orientation: "vertical"
+                                padding: "8dp"
+                                size_hint: 1, None
+                                height: "210dp"
+                                post_hint: {"center_x": .5, "center_y": .5}
+                                elevation: 5
+                                border_radius: 20
+                                radius: [15]
+                                background: "assets//story1.jpg"
+                                FloatLayout:
+                                    RoundIcon:
+                                        source: "assets//1.jpg"
+                                        size: "40dp", "40dp"
+                                        pos_hint: {"center_x": .15, "center_y": .9}
+
+                                    MDLabel:
+                                        bold: True
+                                        text: "Creative Event"
+                                        theme_text_color: "Custom"
+                                        text_color: 1,1,1,1
+                                        pos_hint: {"center_x": .5, "center_y": .08}
+
+                            MDCard:
+                                orientation: "vertical"
+                                padding: "8dp"
+                                size_hint: 1, None
+                                height: "210dp"
+                                post_hint: {"center_x": .5, "center_y": .5}
+                                elevation: 5
+                                border_radius: 20
+                                radius: [15]
+                                background: "assets//story2.jpg"
+                                FloatLayout:
+                                    RoundIcon:
+                                        source: "assets//3.jpg"
+                                        size: "40dp", "40dp"
+                                        pos_hint: {"center_x": .15, "center_y": .9}
+
+                                    MDLabel:
+                                        bold: True
+                                        text: "How I went to club"
+                                        theme_text_color: "Custom"
+                                        text_color: 1,1,1,1
+                                        pos_hint: {"center_x": .5, "center_y": .08}
